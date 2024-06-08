@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
   // Assuming OTP is verified, find or create the user
   let user = await User.findOne({ phoneNumber });
   if (!user) {
-    user = new User({ phoneNumber, name: 'New User' });
+    user = new User({ phoneNumber, name: 'New User', password: 'test123' });
     await user.save();
   }
   const token = generateToken(user._id);
